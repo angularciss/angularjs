@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+	<title>Curso de AngularJS</title>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.css">
+	<script src="vendor/angularjs/angular.js"></script>	
+	<script>
+		angular.module('myApp', []).controller('MeuController', function($scope) {
+			$scope.pessoa = [{
+				nome : 'Djeison',
+				email : 'djeison.hart@gmail.com,'
+			},{
+				nome : 'Cleiton',
+				email : 'cleiton@gmail.com,'
+			}];
+			// Mensagem
+			$scope.msg = 'Isso está visivel!';
+
+			// Função de mostrar
+			$scope.mostrarFn = function(){
+				$scope.mostrar = !$scope.mostrar ;
+			}
+		})
+	</script>
+</head>
+
+</head>
+<body ng-controller="MeuController">
+	<div class="container">
+		<h1>Hello <span ng-bind="pessoa[1].nome"></span><br>
+		Seu email é {{pessoa[1].email}}</h1>
+		<input type="text" ng-model="pessoa[1].nome" class="form-control" placeholder="Insira seu nome"> <br>
+		<input type="text" ng-model="pessoa[1].email" class="form-control" placeholder="Insira seu email"> <br>
+		<buttom class="btn btn-primary" ng-click="pessoa.nome = 'Cleiton'; objeto = pessoa">Mudar para Cleiton</buttom>
+		<buttom class="btn btn-danger" ng-click="mostrarFn()">Mostrar/Esconder</buttom>			
+	</div>
+	<pre ng-if="mostrar">{{msg}}</pre>
+</body>
+</html>
